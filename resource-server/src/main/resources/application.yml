@@ -1,0 +1,20 @@
+server:
+  port: 8090
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: TRACE
+    org.springframework.security: TRACE
+    org.springframework.security.oauth2: TRACE
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        opaque-token:
+          introspection-uri: http://oauth.steven.speaker.com:9000/oauth2/introspect
+          client-id: open-banking-authorization-code-client
+          client-secret: open-banking-authorization-code-secret
+        jwt:
+          issuer-uri: http://oauth.steven.speaker.com:9000

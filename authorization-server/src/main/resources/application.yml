@@ -1,0 +1,21 @@
+server:
+  port: 9000
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: TRACE
+    org.springframework.web.client.RestTemplate: TRACE
+    org.springframework.security: TRACE
+    org.springframework.security.oauth2: TRACE
+
+
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:~/test
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sa

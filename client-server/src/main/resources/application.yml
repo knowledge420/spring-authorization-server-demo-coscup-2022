@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: TRACE
+    org.springframework.web.client.RestTemplate: TRACE
+    org.springframework.security: TRACE
+    org.springframework.security.oauth2: TRACE
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          open-banking-idp:
+            provider: open-banking
+            client-id: open-banking-authorization-code-client
+            client-secret: open-banking-authorization-code-secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://127.0.0.1:8080/login/oauth2/code/{registrationId}"
+            scope:
+              - openid
+              - accounts.read
+              - accounts.write
+            client-name: open-banking-idp
+            client-authentication-method: private_key_jwt
+          github-idp:
+            provider: github
+            client-id: 8b88e67ec3580dedc793
+            client-secret: 5092f4801e9702a3eb853baf7b7e00091057c057
+            scope:
+              - accounts.read
+        provider:
+          open-banking:
+            issuer-uri: http://oauth.steven.speaker.com:9000
+            user-info-uri: http://oauth.steven.speaker.com:9000/userinfo
